@@ -1,0 +1,168 @@
+body{
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    font-family: sans-serif;
+}
+.start{
+    position: fixed;
+    width: 100%;
+    background: black;
+    min-height: 100vh;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+}
+.start.active{
+    animation: 0.3s start 1.2s forwards;
+}
+.robot-lid.active{
+    animation: 1.2s open-mouth ease-out;
+}
+button{
+    border: 1px white solid;
+    box-shadow: 0 0 10px white;
+    padding: 10px 20px;
+    border-radius: 12px;
+    color:white;
+    font-weight: bold;
+    font-size: 20px;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.3s ease;
+    letter-spacing: 2px;
+}
+button:hover{
+    transform: scale(1.05);
+}
+button:active{
+    background: white;
+    color: black;
+}
+.repo{
+    width: 200px;
+}
+.robot-lid{
+    transform-origin:45px 120px;
+}
+.date{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid white;
+    box-shadow:0 0 10px white;
+    padding: 5px 10px;
+    text-shadow: 0 0 10px white;
+    font-size: 40px;
+    flex-direction: column;
+}
+.date strong{
+    display: block;
+    will-change: transform;
+    animation: 2s jump ease-in-out infinite;
+}
+.date p{
+    margin: 0;
+}
+.grid{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+main{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.main-title{
+    font-size: 4rem;
+    text-shadow: 0 0 10px white;
+}
+.date-text{
+    color: gray;
+    text-shadow:none;
+    font-size: 20px;
+}
+.rog-logo-neon{
+    display: block;
+    margin: 20px auto;
+    transition:all 0.5s ease;
+    mix-blend-mode: screen;
+    position: absolute;
+    z-index: -1;
+    opacity: 0.3;
+    pointer-events: none;
+}
+.rog-logo-neon path{
+    animation: pulse 3s infinite ease-in-out;
+}
+.color-picker-wrapper {
+    position: fixed; /* 固定在角落 */
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7); /* 半透明黑色背景 */
+    padding: 10px 15px;
+    border: 1px solid white;
+    box-shadow: 0 0 10px white;
+    border-radius: 10px;
+    z-index: 10; /* 確保在 SVG 之上 */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    text-shadow: 0 0 5px white;
+}
+.color-picker-wrapper label {
+    color: white;
+    cursor: pointer;
+}
+/* 調整 <input type="color"> 原生樣式 */
+.color-picker-wrapper input[type="color"] {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: transparent;
+}
+#neon-glow feGaussianBlur {
+    stdDeviation: 80; /* 調色盤調整時 stdDeviation 稍微調低點會更銳利清晰 */
+}
+@keyframes pulse {
+    0%, 100% { opacity: 0.8; stroke-width: 80; }
+    50% { opacity: 1; stroke-width: 120;}
+}
+@keyframes jump {
+    0%{
+       transform: scale(1);
+    }
+    50%{
+       transform: scale(1.05);
+    }
+    100%{
+       transform: scale(1);
+    }
+}
+@keyframes open-mouth {
+    0% { transform: rotate(0deg); }
+    15% { transform: rotate(-55deg); }
+    30% { transform: rotate(-10deg); }
+    45% { transform: rotate(-25deg); }
+    70% { transform: rotate(-45deg); }
+    100% { transform: rotate(0deg); }
+}
+@keyframes start {
+    0%{
+        opacity: 1;
+        display: flex;
+    }
+    100%{
+        opacity: 0;
+        pointer-events: none;
+    }
+}
