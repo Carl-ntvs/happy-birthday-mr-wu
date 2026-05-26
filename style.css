@@ -88,13 +88,16 @@ main{
     text-shadow:none;
     font-size: 20px;
 }
-.rog-logo-neon{
+.rog-logo-neon {
     display: block;
     margin: 20px auto;
-    transition:all 0.5s ease;
+    transition: all 0.5s ease;
     mix-blend-mode: screen;
-    position: absolute;
-    z-index: -1;
+    position: fixed; /* 改為固定定位，確保它在背景層 */
+    left: 0;
+    bottom: 20px;
+    right: 20px;
+    z-index: 0; /* 設為 0 或更低，但確保不被 body 背景擋住 */
     opacity: 0.3;
     pointer-events: none;
 }
@@ -133,6 +136,20 @@ main{
 #neon-glow feGaussianBlur {
     stdDeviation: 80; /* 調色盤調整時 stdDeviation 稍微調低點會更銳利清晰 */
 }
+.nav-btn {
+    position: fixed;
+    top: 50%;
+    z-index: 100;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    padding: 20px;
+    cursor: pointer;
+}
+#video{
+    display: none;
+}
+.left { left: 10px; }
+.right { right: 10px; }
 @keyframes pulse {
     0%, 100% { opacity: 0.8; stroke-width: 80; }
     50% { opacity: 1; stroke-width: 120;}
