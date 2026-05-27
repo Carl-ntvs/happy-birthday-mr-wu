@@ -45,7 +45,8 @@
                     <label style="font-size: 24px;color: white">
                         音量
                     </label>
-                        <input type="range" v-model="volume" id="" min="0" max="1" step="0.01" style="width: 200px;transform: scale(1.5)">
+                    <input type="range" v-model="volume" id="" min="0" max="1" step="0.01"
+                           style="width: 200px;transform: scale(1.5)">
                 </div>
             </div>
         </main>
@@ -134,7 +135,7 @@
     createApp({
         setup() {
             const volume = ref(0.15);
-            const onPlay=ref(false);
+            const onPlay = ref(false);
             const video = document.getElementById('video');
             const date = ref(new Date());
             const day = ref();
@@ -145,8 +146,8 @@
             const end = ref(false);
             const map = ref(new Set([0]));
             const eyeColor = ref('#ff0032');
-            const bsd = new Date(2026, 5, 14)
-            // const bsd = new Date(Date.now() + 5000)
+            // const bsd = new Date(2026, 5, 14)
+            const bsd = new Date(Date.now() + 5000)
             const page = ref(0)
             watch(volume, (val) => {
                 video.volume = val
@@ -198,9 +199,9 @@
             const play = () => {
                 if (video.paused) {
                     video.play()
-                    onPlay.value=true
+                    onPlay.value = true
                 } else {
-                    onPlay.value=false
+                    onPlay.value = false
                     video.pause()
                 }
             }
@@ -213,6 +214,11 @@
             onMounted(() => {
                 updateTimer()
                 video.volume = volume.value
+                video.addEventListener('timeupdate', () => {
+                    if (video.duration - video.currentTime < 0.1) {
+                        location.href = 'photo.html';
+                    }
+                });
             })
             setInterval(() => {
                 updateTimer()
@@ -233,8 +239,7 @@
                 volume,
                 video,
                 play,
-                onPlay,
-                bsd
+                onPlay
             }
         }
     }).mount('#app');
