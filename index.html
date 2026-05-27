@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fluid.css">
     <link rel="stylesheet" href="pixel.css">
-    <title>Title</title>
+    <link rel="shortcut icon" href="image.png" type="image/x-icon">
+    <title>嘔心瀝血之作</title>
 </head>
 <body>
 <div id="app">
@@ -144,8 +145,8 @@
             const end = ref(false);
             const map = ref(new Set([0]));
             const eyeColor = ref('#ff0032');
-            const bsd = new Date(2026, 5, 14)
-            // const bsd = new Date(Date.now() + 5000)
+            // const bsd = new Date(2026, 5, 14)
+            const bsd = new Date(Date.now() + 5000)
             const page = ref(0)
             watch(volume, (val) => {
                 video.volume = val
