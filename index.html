@@ -145,8 +145,8 @@
             const end = ref(false);
             const map = ref(new Set([0]));
             const eyeColor = ref('#ff0032');
-            // const bsd = new Date(2026, 5, 14)
-            const bsd = new Date(Date.now() + 5000)
+            const bsd = new Date(2026, 5, 14)
+            // const bsd = new Date(Date.now() + 5000)
             const page = ref(0)
             watch(volume, (val) => {
                 video.volume = val
@@ -233,7 +233,8 @@
                 volume,
                 video,
                 play,
-                onPlay
+                onPlay,
+                bsd
             }
         }
     }).mount('#app');
